@@ -24,7 +24,7 @@ var_dump($_POST);
 
 if (isset($_POST["Validar"])) {
     //comprobamos nombre
-    if ($_POST["nombre"] == '') {
+    if ($_POST["nombre"] === '') {
         $errores['nombre'] = "Campo requerido";
     }
     //comprobamos edad
