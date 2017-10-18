@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/TablaMultiplicar/Ejercicio03AdminImages/index.php</file>
-            <file>file:/C:/xampp/htdocs/TablaMultiplicar/Ejercicio03AdminImages/delete.php</file>
-            <file>file:/C:/xampp/htdocs/TablaMultiplicar/Ejercicio02Ficheros/index.php</file>
-            <file>file:/C:/xampp/htdocs/TablaMultiplicar/Ejercicio01Formulario/index.php</file>
-            <file>file:/C:/xampp/htdocs/TablaMultiplicar/Ejercicio03AdminImages/upload.php</file>
+            <file>file:/C:/xampp/htdocs/TablaMultiplicar/CarritoCompra/catalogo.php</file>
+            <file>file:/C:/xampp/htdocs/TablaMultiplicar/CarritoCompra/informacion.php</file>
+            <file>file:/C:/xampp/htdocs/TablaMultiplicar/CarritoCompra/init.php</file>
+            <file>file:/C:/xampp/htdocs/TablaMultiplicar/CarritoCompra/index.php</file>
         </group>
     </open-files>
 </project-private>
