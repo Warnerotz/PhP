@@ -1,0 +1,151 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+
+}
+header{
+    height: 100px;
+    background-color: antiquewhite;
+
+}
+
+#logo{
+
+    float: left;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 1%;
+    margin-top: 1.5%;
+}
+
+#login{
+    float: right;
+    font-size: 30px;
+    margin-top: 1.5%;
+    margin-right:1%;
+
+}
+#seleccion form select{
+    margin-top: 20px;
+    width: 150px;
+
+}
+
+#seleccion form input{
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 200px;
+    text-transform: uppercase;
+
+}
+
+a{
+    text-decoration: none;
+}
+h2{
+    margin-top: 150px;
+    margin-bottom: 100px;
+}
+.articulo{
+    width: 300px;
+    border: 3px solid red;
+    border-radius: 10px;
+    padding: 20px 20px;
+
+}
+.boton_personalizado{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+    display: block;
+}
+#precio{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    color: coral;
+
+}
+#destacados{
+    margin-top:25px;
+    display: flex;
+    justify-content: space-around; 
+    flex-wrap: wrap;
+
+}
+#titulo{
+    text-align: center;
+
+}
+#contenedor{
+    text-align: center;
+
+
+}
+
+#contenedorInfo {
+    
+        display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+        margin-top: 10%;
+
+}
+
+#informacionEl{
+        width: 500px;
+    text-align: justify;
+    border: 4px solid red;
+    padding: 15px 15px;
+    border-radius: 10px;
+    
+}
+
+#informacionEl h3{
+    
+        text-align: center;
+}
+
+
+#informacionEl a {
+        margin: 0 auto;
+    display: block;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+        
+}
+
+#informacionEl #cant {
+    float: right;
+    width: 50px;
+    
+}
+
+#informacionEl #carrito {
+    
+    float: right;
+}
+
+#catalogo{
+    margin-top:25px;
+    display: flex;
+    justify-content: space-around; 
+    flex-wrap: wrap;
+    
+    text-align: center;
+
+}
+
+#tituloCat{
+        margin-top: 20px;
+    text-align: center;
+    font-size: 40px;
+    
+}

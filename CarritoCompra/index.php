@@ -1,5 +1,6 @@
 <?php
 require 'init.php';
+session_start();
 ?>
 
 
@@ -8,51 +9,15 @@ require 'init.php';
     <head>
         <meta charset="UTF-8">
         <title>carrito</title>
-        <style type="text/css">
-            a{
-                text-decoration: none;
-            }
-            h2{
-                margin-top: 150px;
-                
-            }
-            .articulo{
-              width: 300px;
-                
-            }
-            #precio{
-                font-size: 25px;
-                font-weight: bold;
-                text-align: center;
-                color: coral;
-                
-            }
-            #destacados{
-                margin-top:25px;
-                display: flex;
-                justify-content: space-around; 
-                flex-wrap: wrap;
-                
-            }
-            #titulo{
-                text-align: center;
-                
-            }
-            #contenedor{
-               text-align: center;
-                
-                
-            }
-            
-        </style>
-        
+        <link rel="stylesheet" type="text/css" href="CSS/estilo.css">        
     </head>
     <body>
         
         <div id="contenedor">
-            <div>
-                <h1>Mi tienda de componentes para Ordenador</h1>
-            </div>
+                <?php require 'montaHeader.php';?>
+            <div id='seleccion'>
+                <h1>Elija una categoria</h1>
+            
             <form method="get" action="catalogo.php">
                 <select name="cat">                    
                     <?php
@@ -60,9 +25,11 @@ require 'init.php';
                         echo "<option value='$codigo'>$categoria</option>";
                     }
                     ?>
-                </select>
-                <input type="submit" name="Seguir" value="seguir">
+                </select><br>
+                <input class='boton_personalizado' type="submit" name="Seguir" value="seguir">
             </form>
+                
+            </div>    
             <div>
                 <h2>Elementos destacados de hoy</h2>
             </div>
@@ -72,8 +39,6 @@ require 'init.php';
                         
                         if($articulo['destacado']===true){
                             require 'montaje.php';
-                            
-                            
                         }
                         
                     }
