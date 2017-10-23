@@ -26,6 +26,11 @@ header{
     margin-right:1%;
 
 }
+#login a {
+    margin-left: 15px;
+    
+}
+
 #seleccion form select{
     margin-top: 20px;
     width: 150px;
@@ -42,10 +47,11 @@ header{
 
 a{
     text-decoration: none;
+    
 }
 h2{
-    margin-top: 150px;
-    margin-bottom: 100px;
+    margin-top: 4%;
+    margin-bottom: 3%;
 }
 .articulo{
     width: 300px;
@@ -91,20 +97,41 @@ h2{
 
 #contenedorInfo {
     
-        display: flex;
-    justify-content: space-around;
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
         margin-top: 10%;
 
 }
 
+
+
 #informacionEl{
-        width: 500px;
+      display: flex;
+    justify-content: center;
+    flex-wrap: wrap;    
     text-align: justify;
     border: 4px solid red;
     padding: 15px 15px;
     border-radius: 10px;
+    width: 1000px;
     
+}
+
+#descripcion{
+        width: 40%;
+    margin-left: 120px;
+    
+}
+
+#descripcion p{
+    margin-top: 2%;
+    
+}
+
+#descripcion form{
+    
+    margin-top: 9%;
 }
 
 #informacionEl h3{
@@ -114,7 +141,7 @@ h2{
 
 
 #informacionEl a {
-        margin: 0 auto;
+     margin: 0 auto;
     display: block;
     width: 200px;
     height: 200px;
@@ -122,8 +149,13 @@ h2{
         
 }
 
+#informacionEl label{
+    font-weight: bold;
+    
+}
+
 #informacionEl #cant {
-    float: right;
+   
     width: 50px;
     
 }
@@ -147,5 +179,10 @@ h2{
         margin-top: 20px;
     text-align: center;
     font-size: 40px;
+    
+}
+
+table{
+    margin: 0 auto;
     
 }

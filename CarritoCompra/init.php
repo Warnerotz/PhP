@@ -1,7 +1,7 @@
 <?php
-
+session_start();
 $ruta="imagenes/";
-
+$errores=[];
 $descripcion = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 $categorias = ['TG' => 'Tarjetas Graficas', 'M' => 'Monitores'];
 $articulos =[
@@ -14,18 +14,43 @@ $articulos =[
     'M03' =>['codigo' =>'M03', 'nombre'=>'Benq PV270 27"', 'precio'=>879,'imagen'=>'monitor03.png','descripcion'=>"$descripcion",'destacado'=>true,'categoria'=>'M'],
     /*'P04' =>['codigo' =>'P04', 'nombre'=>'Ordenador sony', 'precio'=>500, 'categoria'=>'PC'],*/
     //codigo nombre precio categoria
-    
-    
-    
-    
-    
-    
-    
-    
+ 
 ];
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
+function usuario(){
+    if(isset($_SESSION['usuario']))
+            return $_SESSION['usuario'];
+    else
+        return false;
+}
+
+/** Login de un usuario
+ * 
+ * @param type $usuario
+ * @param type $pass
+ * @return boolean  Devuelve true o false si es correcto o no
+ */
+function login($usuario,$pass){
+    $usuarios=array('admin'=>'1234','pepe'=>'pepe');
+    if(!isset($usuarios[$usuario]) || $usuarios[$usuario]!=$pass)
+        return false;
+    else {
+        $_SESSION['usuario']=$usuario;
+        return true;
+    }
+    
+}
+
+function logout(){
+    session_destroy();
+    
+}
+
+
+function vererror($variable) {
+    //hace global la variable errores
+    global $errores;
+    if (isset($errores[$variable])) {
+        echo "<span style='color:red'>$errores[$variable]</span><br>";
+    }
+}

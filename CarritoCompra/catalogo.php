@@ -14,6 +14,18 @@ if (isset($_GET['Seguir'])) {
 } else {
     
 }
+/*
+if (isset($_GET['cat'])) {
+        foreach ($articulos as $codigo => $valor) {
+            if ($valor['categoria'] === $_GET['cat']) {
+                $lista[] = $codigo;
+            }
+        }
+    } else {
+        echo 'error la categoria es necesaria';
+    }
+
+ */   
 ?>
 
 <html lang="en">
@@ -40,11 +52,12 @@ if (isset($_GET['Seguir'])) {
             <?php
             foreach ($lista as $valor) {
                 $articulo = $articulos[$valor];
-                require 'montaje.php';
-            }
+                require 'montaje.php';            }
             ?>
         </div>     
-
+        <div>
+            <a style="width: 150px; margin: 0 auto; margin-top: 2%; text-align: center" class="boton_personalizado" href='index.php'>Volver</a>
+        </div>
     </body>
 
 </html>

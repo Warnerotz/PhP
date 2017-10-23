@@ -1,8 +1,7 @@
 <?php
 require 'init.php';
-session_start();
-?>
 
+?>
 
 <html lang="en">
 
