@@ -13,7 +13,7 @@ if(isset($_POST['comprobar'])){
     }
     
     if(isset($_POST['cantidad'])){
-       
+        var_dump($_POST['cantidad']);
         
     }
     
@@ -63,14 +63,16 @@ if(isset($_POST['terminar'])){
                             $precioTotal=0;
                             foreach($_SESSION['carrito'] as $codigo => $cantidad){
                                 $articulo = $articulos[$codigo];
+                                
                                 echo '<tr>';
                                 echo "<td><input style='width: 50px; text-align: center; background: trasparent' type='number' name='cantidad[]' value='$cantidad'></td>";                                
                                 echo "<td>$articulo[nombre]</td>";
                                 echo "<td>$articulo[precio]€</td>";
-                                echo "<td><input type='checkbox' id='check$i' name='borrar[]' value='$articulo[codigo]'></td>";
+                                echo "<td><input type='checkbox' id='check$i' name='borrar[]' value='$articulo[codigo]'/></td>";
                                 echo '</tr>';
                                 $precioTotal+= $articulo['precio'];
                                 $i++;
+                                echo "<input type='hidden' name='cod[]' value='$codigo'/>";
                             }
                     ?>
                     <tr>

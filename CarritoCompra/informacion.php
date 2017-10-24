@@ -24,8 +24,7 @@ if(isset($_POST['agregar'])){
         $errores['cantidad'] ='cantidad debe ser mayor que 0';
         
     }
-    
- var_dump($_SESSION['carrito']);   
+ 
 }
  ;
 
