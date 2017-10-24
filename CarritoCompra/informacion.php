@@ -14,9 +14,9 @@ if(isset($_POST['agregar'])){
             $_SESSION['carrito'][$articulo['codigo']] += $_POST['cantidad'];                       
         }
         if($articulo['categoria']==='TG'){
-            //header("Refresh:2; url=catalogo.php?cat=TG&Seguir=seguir");
+            header("Refresh:2; url=catalogo.php?cat=TG&Seguir=seguir");
         }else{
-            //header("Refresh:2; url=catalogo.php?cat=M&Seguir=seguir");            
+            header("Refresh:2; url=catalogo.php?cat=M&Seguir=seguir");            
         }
         
         
