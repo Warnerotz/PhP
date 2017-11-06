@@ -1,0 +1,122 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+
+}
+
+
+ .boton_personalizado{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+  }
+
+
+a{
+    text-decoration: none;
+    color:white;
+}
+
+header{
+    height: 100px;
+    background-color: #1883ba;
+    
+
+}
+
+#logo{
+
+    float: left;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 1%;
+    margin-top: 1.5%;
+   
+}
+
+#login{
+    float: right;
+    font-size: 30px;
+    margin-top: 1.5%;
+    margin-right:1%;
+    
+}
+#login a {
+    margin-left: 15px;
+    
+}
+
+#empezar{
+    text-align: center;
+    margin-top:15%;
+}
+
+#inputable{
+    
+    text-align: center;
+    margin-top: 10%;
+}
+
+#error{
+     text-align: center;
+     width: 350px;
+     margin: 0 auto;
+     margin-top: 2%;
+     height: 70px;
+}
+
+.win{
+    border: 2px solid green;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #A5FEAE;
+    font-weight: bold;
+    color: green;
+    
+}
+
+.errores{    
+    border: 2px solid red;   
+    padding: 20px;
+    border-radius: 15px;
+    background-color: antiquewhite;
+    font-weight: bold;
+    color: red;
+    
+}
+
+table{
+    margin: 0 auto;
+    margin-top: 4%;
+    width: 700px;
+    text-align: center;
+    border: 1px solid red;
+    border-collapse: collapse;
+}
+
+table th{
+    padding: 10px 10px;
+    border-right: 1px solid red;
+    
+}
+
+table td{
+    padding: 10px 10px;   
+    border: 1px solid red;
+}
+
+#volverJugar{
+    text-align: center;
+    
+}
+
