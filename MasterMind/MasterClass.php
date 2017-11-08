@@ -2,11 +2,11 @@
 
 class MasterMind {
 
-    public $intentos = 7;
-    public $longitud = 4;
-    public $tamañoAdivina = 5;
+    public $intentos = 0;    
+    public $longitud = 0;
+    public $tamañoAdivina = 0;
     public $adivina = [];
-    public $jugadas = [];
+    public $jugadas = [];    
     //variables estaticas de errores
     static $errores = [
         "0" => "juegada OK",

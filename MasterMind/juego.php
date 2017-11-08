@@ -11,33 +11,36 @@ if (!isset($_SESSION['master'])) {
     if(isset($_POST['facil'])){
         $_SESSION['master']->longitud = 4;        
         $_SESSION['master']->intentos = 7;
-        $_SESSION['master']->tamañoAdivina = 9;        
+        $_SESSION['master']->tamañoAdivina = 6;        
     }
     if(isset($_POST['intermedio'])){
         $_SESSION['master']->longitud = 6;        
         $_SESSION['master']->intentos = 6;
-        $_SESSION['master']->tamañoAdivina = 9;        
+        $_SESSION['master']->tamañoAdivina = 7;        
     }
     
     if(isset($_POST['dificil'])){
         $_SESSION['master']->longitud = 8;        
         $_SESSION['master']->intentos = 4;
-        $_SESSION['master']->tamañoAdivina = 9;        
+        $_SESSION['master']->tamañoAdivina = 8;        
     }
     
     $_SESSION['master']->generarJug();
+    $jugadasRestantes = $_SESSION['master']->intentos;
 }
 $master = $_SESSION['master'];
-$jugadasRestantes = $master->intentos;
+
 var_dump($master);
 $valor = 0;
-
+$jugadasRestantes= $master->intentos;
+//var_dump($jugadasRestantes);
 if (isset($_GET['jugadas'])) {
+    
     $valor = $master->compJugada($_GET['jugadas']);
     //var_dump($master);
-    $jugadasRestantes--;
-    $numIntentos++;
-    var_dump($valor);
+    --$jugadasRestantes;
+    ++$numIntentos;
+    var_dump($jugadasRestantes);
 }
 ?>
 
@@ -49,25 +52,30 @@ if (isset($_GET['jugadas'])) {
     </head>
     <body>
         <?php require 'header.php' ?>
-        <div>
-            
+        <div id="restantes">
+            <?="<p>Jugadas restantes<br>".$numIntentos++."</p>" ?>
             
         </div>
         <div id='mostrarJugadas'>
             <table>
+                <!--
                 <tr>
+                    
                     <th>Jugada</th>
                     <th>Muertos</th>
                     <th>Heridos</th>
                 </tr>
-                
+                -->
                 <?php
                 if($terminada===false){
                     foreach ($master->jugadas as $jugada => $valores) {
+                        $arrayJug = str_split($jugada);
                         echo "<tr>";
-                        echo "<td>$jugada</td>";
-                        echo "<td>$valores[muertos]</td>";
-                        echo "<td>$valores[heridos]</td>";
+                        for($i=0; $i< $master->longitud; $i++){
+                            echo "<td class='casilla'>$arrayJug[$i]</td>";
+                        }
+                        echo "<td class='muerHeri'>Muertos  $valores[muertos]</td>";
+                        echo "<td class='muerHeri'>Heridos  $valores[heridos]</td>";
                         echo "</tr>";
                         if($valores['muertos']== $master->longitud){
                             $terminada = true;
