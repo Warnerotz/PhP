@@ -2,9 +2,9 @@
 
 class MasterMind {
 
-    const JUGADAS = 7;
-    const LONGITUD = 4;
-
+    public $intentos = 7;
+    public $longitud = 4;
+    public $tamañoAdivina = 5;
     public $adivina = [];
     public $jugadas = [];
     //variables estaticas de errores
@@ -12,7 +12,7 @@ class MasterMind {
         "0" => "juegada OK",
         "1" => "juagada repetida",
         "2" => "numeros repetidos en la jugada",
-        "3" => "numero introducido demasiado largo"
+        "3" => "longitud incorrecta de numero"
     ];
 
     function __construct() {
@@ -52,9 +52,9 @@ class MasterMind {
     }
 
     public function generarJug() {
-        $this->adivina = range(1, 6);
+        $this->adivina = range(1, $this->tamañoAdivina);
         shuffle($this->adivina);
-        $this->adivina = array_slice($this->adivina, 0, 4);
+        $this->adivina = array_slice($this->adivina, 0, $this->longitud);
     }
 
     public function validarJugada($valida, $jugada) {
@@ -63,7 +63,7 @@ class MasterMind {
             return 1;
         } elseif ((count($jugada)) != (count(array_unique($jugada)))) {
             return 2;
-        } elseif((count($jugada))>MasterMind::LONGITUD) {
+        } elseif((count($jugada))!=$this->longitud) {
             return 3;
         }else{
             return 0;

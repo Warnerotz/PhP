@@ -8,6 +8,8 @@
 
  .boton_personalizado{
     text-decoration: none;
+    margin-bottom: 1%;
+    width: 150px;
     padding: 10px;
     font-weight: 600;
     font-size: 20px;

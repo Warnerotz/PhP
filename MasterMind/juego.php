@@ -3,19 +3,39 @@ require "MasterClass.php";
 require 'init.php';
 //session_destroy();
 //die;
+$jugadasRestantes = 0;
 $numIntentos = 0;
 $terminada= false;
 if (!isset($_SESSION['master'])) {
     $_SESSION['master'] = new MasterMind();
+    if(isset($_POST['facil'])){
+        $_SESSION['master']->longitud = 4;        
+        $_SESSION['master']->intentos = 7;
+        $_SESSION['master']->tamañoAdivina = 9;        
+    }
+    if(isset($_POST['intermedio'])){
+        $_SESSION['master']->longitud = 6;        
+        $_SESSION['master']->intentos = 6;
+        $_SESSION['master']->tamañoAdivina = 9;        
+    }
+    
+    if(isset($_POST['dificil'])){
+        $_SESSION['master']->longitud = 8;        
+        $_SESSION['master']->intentos = 4;
+        $_SESSION['master']->tamañoAdivina = 9;        
+    }
+    
     $_SESSION['master']->generarJug();
 }
 $master = $_SESSION['master'];
+$jugadasRestantes = $master->intentos;
 var_dump($master);
 $valor = 0;
 
 if (isset($_GET['jugadas'])) {
     $valor = $master->compJugada($_GET['jugadas']);
     //var_dump($master);
+    $jugadasRestantes--;
     $numIntentos++;
     var_dump($valor);
 }
@@ -29,6 +49,10 @@ if (isset($_GET['jugadas'])) {
     </head>
     <body>
         <?php require 'header.php' ?>
+        <div>
+            
+            
+        </div>
         <div id='mostrarJugadas'>
             <table>
                 <tr>
@@ -45,7 +69,7 @@ if (isset($_GET['jugadas'])) {
                         echo "<td>$valores[muertos]</td>";
                         echo "<td>$valores[heridos]</td>";
                         echo "</tr>";
-                        if($valores['muertos']== MasterMind::LONGITUD){
+                        if($valores['muertos']== $master->longitud){
                             $terminada = true;
 
                         }
@@ -86,7 +110,7 @@ if (isset($_GET['jugadas'])) {
                 
             }
             
-            if($numIntentos == MasterMind::JUGADAS){
+            if($numIntentos == $master->intentos){
                 echo"<span class='errores'>Sintiendolo mucho has perdido</span><br>";
                 
             }
