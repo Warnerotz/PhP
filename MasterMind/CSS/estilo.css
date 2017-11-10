@@ -71,15 +71,42 @@ header{
     
 }
 
+#mostrarJugadas > p{
+        border: solid;
+    padding: 1%;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #1883ba;
+    color: white;
+    margin: 0 auto;
+    width: 200px;
+    border-radius: 10px;
+    
+}
+
 #empezar{
     text-align: center;
     margin-top:15%;
 }
 
 #inputable{
-    
     text-align: center;
-    margin-top: 10%;
+    margin-top: 1%;
+   
+    font-size: 26px;
+}
+
+#comp{
+    width: 150px;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 20px;
+    
+}
+
+#comp:focus{
+    background-color: skyblue;
+    
 }
 
 #error{
@@ -110,7 +137,7 @@ header{
     
 }
 
-table{
+#jug{
     margin: 0 auto;
     margin-top: 4%;    
     text-align: center;    
@@ -120,7 +147,7 @@ table{
     color: white;
 }
 
-table th{
+#jug th{
     padding: 10px 10px;
     border-right: 1px solid red;
     
@@ -134,5 +161,20 @@ table td{
 #volverJugar{
     text-align: center;
     
+}
+
+#container{
+    display: flex;
+    justify-content: space-around; 
+    flex-wrap: wrap;
+    margin-top: 2%;
+    text-align: center;
+    
+}
+
+#infor{
+    
+    width: 200px;
+    text-align: center;
 }
 

@@ -3,28 +3,20 @@ require "MasterClass.php";
 require 'init.php';
 //session_destroy();
 //die;
-$jugadasRestantes = 0;
-$numIntentos = 0;
-$terminada= false;
+
 if (!isset($_SESSION['master'])) {
     $_SESSION['master'] = new MasterMind();
-    if(isset($_POST['facil'])){
-        $_SESSION['master']->longitud = 4;        
-        $_SESSION['master']->intentos = 7;
-        $_SESSION['master']->tamañoAdivina = 6;        
+    if (isset($_POST['facil'])) {
+        $_SESSION['master']->setnivel(1);
     }
-    if(isset($_POST['intermedio'])){
-        $_SESSION['master']->longitud = 6;        
-        $_SESSION['master']->intentos = 6;
-        $_SESSION['master']->tamañoAdivina = 7;        
+    if (isset($_POST['intermedio'])) {
+        $_SESSION['master']->setnivel(2);
     }
-    
-    if(isset($_POST['dificil'])){
-        $_SESSION['master']->longitud = 8;        
-        $_SESSION['master']->intentos = 4;
-        $_SESSION['master']->tamañoAdivina = 8;        
+
+    if (isset($_POST['dificil'])) {
+        $_SESSION['master']->setnivel(3);
     }
-    
+
     $_SESSION['master']->generarJug();
     $jugadasRestantes = $_SESSION['master']->intentos;
 }
@@ -32,15 +24,20 @@ $master = $_SESSION['master'];
 
 var_dump($master);
 $valor = 0;
-$jugadasRestantes= $master->intentos;
+
+echo $master->intentos;
 //var_dump($jugadasRestantes);
-if (isset($_GET['jugadas'])) {
-    
-    $valor = $master->compJugada($_GET['jugadas']);
-    //var_dump($master);
-    --$jugadasRestantes;
-    ++$numIntentos;
-    var_dump($jugadasRestantes);
+if(isset($_GET['comprobar'])){
+    if (isset($_GET['jugadas'])) {
+
+
+            $valor = $master->compJugada($_GET['jugadas']);
+
+
+
+        //$jugadasRestantes = $master->intentos - count($master->jugadas);
+        //$numIntentos = count($master->jugadas);  
+    }
 }
 ?>
 
@@ -52,89 +49,95 @@ if (isset($_GET['jugadas'])) {
     </head>
     <body>
         <?php require 'header.php' ?>
-        <div id="restantes">
-            <?="<p>Jugadas restantes<br>".$numIntentos++."</p>" ?>
-            
-        </div>
-        <div id='mostrarJugadas'>
-            <table>
-                <!--
-                <tr>
+        <div id="container">
+            <div id="restantes">
+                
+
+            </div>
+            <?php ?>
+            <div id='mostrarJugadas'>
+                <?= "<p>Jugadas restantes<br>" . $master->intentosRestantes() . "</p>" ?>
+               
+                <table id="jug">
+                    <!--
+                    <tr>
+                        
+                        <th>Jugada</th>
+                        <th>Muertos</th>
+                        <th>Heridos</th>
+                    </tr>
+                    -->
+                    <?php
                     
-                    <th>Jugada</th>
-                    <th>Muertos</th>
-                    <th>Heridos</th>
-                </tr>
+                        foreach ($master->jugadas as $jugada => $valores) {
+                            $arrayJug = str_split($jugada);
+                            echo "<tr>";
+                            for ($i = 0; $i < $master->longitud; $i++) {
+                                echo "<td class='casilla'>$arrayJug[$i]</td>";
+                            }
+                            echo "<td class='muerHeri'>Muertos  $valores[muertos]</td>";
+                            echo "<td class='muerHeri'>Heridos  $valores[heridos]</td>";
+                            echo "</tr>";
+                            /*  if ($valores['muertos'] == $master->longitud) {
+                              $terminada = true;
+                              }
+                             */
+                        }
+                    ?>
+                </table>
+            </div>
+                
+
+            <div id="informacion">
+                <!--
+                <table id="infor">
+                    <tr>
+                        <th>Tamaño introducir</th>
+                        <th>Intentos Max</th>
+                        <th>Tamañao Adivinar</th>
+                    </tr>
+                    <tr>
+                        <td><?= $master->longitud ?></td>
+                        <td><?= $master->intentos ?></td>
+                        <td><?= $master->tamañoAdivina ?></td>
+                    </tr>
+                </table>
+
                 -->
-                <?php
-                if($terminada===false){
-                    foreach ($master->jugadas as $jugada => $valores) {
-                        $arrayJug = str_split($jugada);
-                        echo "<tr>";
-                        for($i=0; $i< $master->longitud; $i++){
-                            echo "<td class='casilla'>$arrayJug[$i]</td>";
-                        }
-                        echo "<td class='muerHeri'>Muertos  $valores[muertos]</td>";
-                        echo "<td class='muerHeri'>Heridos  $valores[heridos]</td>";
-                        echo "</tr>";
-                        if($valores['muertos']== $master->longitud){
-                            $terminada = true;
+            </div>
 
-                        }
-                    }
-                }    
-                ?>
-            </table>
         </div>
-
+        <?php
+        if($valor!=4 || $valor!=5){
+        ?>
         <div id="inputable">
             <form method='get'>                
-                <label for="juagadas">Jugada</label>
-                <input type="text" name='jugadas' value=""/>
+               <!-- <label for="juagadas">Jugada</label> -->
+                <input id="comp"  type="text" name='jugadas' value="" placeholder="Jugada"/>
+                <input class="boton_personalizado" type="submit" name='comprobar' value="Comprobar" />
+                <a class="boton_personalizado" href='index.php'>Volver a jugar</a>
             </form>
         </div>
-        
+        <?php } ?>
         <div id="error">
             <?php
-             switch ($valor) {
-                case 1 : {
-
-                        echo"<span class='errores'>" . MasterMind::$errores[$valor] . "</span>";
-                        break;
-                    }
-                case 2: {
-                        echo"<span class='errores'>" . MasterMind::$errores[$valor] . "</span>";
-                        break;
-                    }
-                case 3:
-                     {
-                        echo"<span class='errores'>" . MasterMind::$errores[$valor] . "</span>";
-                        break;
-                    }
-            }
-            
-            if($terminada){
-                echo"<span class='win'>Enhorabuena has ganado</span><br>";
+            if ($valor != 0 && $valor !=5 && $valor !=4)
+                echo"<span class='errores'>" . MasterMind::$errores[$valor] . "</span>";
+            if($valor == 5){
+                echo"<span class='win'>" . MasterMind::$errores[$valor] . "</span>";
                 
             }
-            
-            if($numIntentos == $master->intentos){
-                echo"<span class='errores'>Sintiendolo mucho has perdido</span><br>";
+            if($valor ==4){
+                $adivina = implode($master->adivina);
+                echo"<span class='errores'>" . MasterMind::$errores[$valor] ." Numero: $adivina". "</span>";
                 
             }
             ?>
-            
-            
-        </div>
-        <div id="volverJugar">
-            <a class="boton_personalizado" href='index.php'>Volver a jugar</a>
-        </div>
+
+
+        </div>        
+
     </body>
 
 </html>
-
-
-
-
-
 

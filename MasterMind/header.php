@@ -9,7 +9,7 @@
         <?php
           if(usuario()){
           echo "<a  href='#'>Mi perfil</a>";  
-          echo "<a  href='carrito.php'>Carrito</a>";
+          
           echo "<a  href='logout.php'>Salir</a>";
           
         }else{

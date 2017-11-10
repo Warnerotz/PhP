@@ -18,7 +18,7 @@ if(isset($_POST['entrar'])) {
         <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
     </head>
     <body>
-        <?php require 'montaHeader.php'; ?>
+        <?php require 'header.php'?>
         <fieldset style='margin:auto;width:300px'>
         <legend>Login</legend>
         <form method="post">Usuario: <input name="usuario"><br>
