@@ -14,12 +14,12 @@
     $bolas=[];
     if (isset($_POST['acc'])) {
         
-        $existe;
+        
         if (isset($_POST['bola'])) {
             if (is_numeric($_POST['bola']) && $_POST['bola']<91) {    
                     $_SESSION['jugadas'][] = $_POST['bola'];
                     $bolas[]= $_POST['bola'];
-                  /*  
+                    
                     foreach($_SESSION['jugadas'] as $codigo => $valor){
                         //esto no funciona y no se porq lo q deberia de hacer
                         // es recorre el array de la sesion y si encuentra uno igual al numero introducido lo elimina
@@ -28,7 +28,7 @@
                         }
                         
                     }
-                    */   
+                       
                 
                 
                 
