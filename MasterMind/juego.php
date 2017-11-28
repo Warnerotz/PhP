@@ -22,10 +22,10 @@ if (!isset($_SESSION['master'])) {
 }
 $master = $_SESSION['master'];
 
-var_dump($master);
+//var_dump($master);
 $valor = 0;
 
-echo $master->intentos;
+//echo $master->intentos;
 //var_dump($jugadasRestantes);
 if(isset($_GET['comprobar'])){
     if (isset($_GET['jugadas'])) {
@@ -50,23 +50,13 @@ if(isset($_GET['comprobar'])){
     <body>
         <?php require 'header.php' ?>
         <div id="container">
-            <div id="restantes">
-                
-
-            </div>
+            <div id="restantes"></div>
             <?php ?>
             <div id='mostrarJugadas'>
                 <?= "<p>Jugadas restantes<br>" . $master->intentosRestantes() . "</p>" ?>
                
                 <table id="jug">
-                    <!--
-                    <tr>
-                        
-                        <th>Jugada</th>
-                        <th>Muertos</th>
-                        <th>Heridos</th>
-                    </tr>
-                    -->
+                   
                     <?php
                     
                         foreach ($master->jugadas as $jugada => $valores) {
@@ -88,22 +78,7 @@ if(isset($_GET['comprobar'])){
             </div>
                 
 
-            <div id="informacion">
-                <!--
-                <table id="infor">
-                    <tr>
-                        <th>Tamaño introducir</th>
-                        <th>Intentos Max</th>
-                        <th>Tamañao Adivinar</th>
-                    </tr>
-                    <tr>
-                        <td><?= $master->longitud ?></td>
-                        <td><?= $master->intentos ?></td>
-                        <td><?= $master->tamañoAdivina ?></td>
-                    </tr>
-                </table>
-
-                -->
+            <div id="informacion">              
             </div>
 
         </div>

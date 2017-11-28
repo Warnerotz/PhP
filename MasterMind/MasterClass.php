@@ -3,7 +3,7 @@
 class MasterMind {
 
     public static $niveles = [
-        '1' => ['intentos' => 2, 'longitud' => 4, 'tamañoAdivina' => 4],
+        '1' => ['intentos' => 7, 'longitud' => 4, 'tamañoAdivina' => 4],
         '2' => ['intentos' => 6, 'longitud' => 6, 'tamañoAdivina' => 6],
         '3' => ['intentos' => 5, 'longitud' => 7, 'tamañoAdivina' => 7]
     ];

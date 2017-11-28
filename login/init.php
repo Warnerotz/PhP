@@ -1,26 +1,46 @@
 <?php
 session_start(['cookie_lifetime' => 60*60*24*30]);
 
-/** Devuelve el nombre de usuario logueado
- * 
- * @return string/boolean  Nombre del usuario, o false si no esta logueado
- */
+
+
+$enlace =  mysqli_connect('localhost', 'root', '')or 
+    die('No pudo conectarse: ' . mysqli_error());
+mysqli_select_db($enlace, 'blog');
+
+
 function usuario(){
     if(isset($_SESSION['usuario']))
             return $_SESSION['usuario'];
     else
         return false;
 }
-
-/** Login de un usuario
- * 
- * @param type $usuario
- * @param type $pass
- * @return boolean  Devuelve true o false si es correcto o no
- */
+/*
 function login($usuario,$pass){
-    $usuarios=array('admin'=>'1234','pepe'=>'pepe');
-    if(!isset($usuarios[$usuario]) || $usuarios[$usuario]!=$pass)
+    global $enlace;
+    $passmd5 = md5($pass);
+    $query = mysqli_query($enlace,"SELECT usuario, password, estado FROM usuarios WHERE usuario = '$usuario' and password = '$passmd5'");    
+    $datos = mysqli_fetch_assoc($query);
+    var_dump($datos);
+    die();
+    
+    if(!$query || $datos['estado']=="P")
+        return false;
+    else {
+        $_SESSION['usuario']=$usuario;
+        return true;
+    }
+    
+}
+*/
+function login($usuario,$pass){
+    global $enlace;
+    $passmd5 = md5($pass);
+    $query = mysqli_query($enlace,"SELECT usuario, password, estado FROM usuarios WHERE usuario = '$usuario' and password = '$passmd5'");    
+    $datos = mysqli_fetch_assoc($query);
+    var_dump($datos);
+    die();
+    
+    if(!$query || $datos['estado']=="P")
         return false;
     else {
         $_SESSION['usuario']=$usuario;
